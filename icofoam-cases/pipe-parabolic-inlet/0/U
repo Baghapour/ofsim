@@ -24,7 +24,7 @@ boundaryField
     {
         //type    fixedValue;
 		
-		type    codedFixedValue;
+	type    codedFixedValue;
         value   uniform (0.1 0 0);
         
         name    parabolicInlet;
