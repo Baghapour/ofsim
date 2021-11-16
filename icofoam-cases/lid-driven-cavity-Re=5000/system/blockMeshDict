@@ -1,0 +1,97 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+
+L        1.0;
+H        1.0;
+W        0.01;
+
+nx       100;
+ny       100;
+nz       1;
+
+xr       0.5;
+ixr      #calc "1.0/$xr"; 
+yr       0.5;
+iyr      #calc "1.0/$yr";
+
+vertices
+(
+    ( 0.0  0.0   0.0 )
+    ( $L   0.0   0.0 )
+    ( $L   $H    0.0 )
+    ( 0.0  $H    0.0 )
+
+    ( 0.0  0.0   $W )
+    ( $L   0.0   $W )
+    ( $L   $H    $W )
+    ( 0.0  $H    $W )
+);
+
+blocks
+(
+   hex ( 0 1 2 3 4 5 6 7 ) ( $nx $ny $nz ) simpleGrading 
+   (
+      ( (0.5 1 $ixr) (0.5 1 $xr) )
+      ( (0.5 1 $iyr) (0.5 1 $yr) ) 
+      1 
+   )
+);
+
+edges
+(
+);
+
+boundary
+(
+    movingWall
+    {
+        type wall;
+        faces
+        (
+            (3 2 6 7)     // Top wall
+        );
+    }
+
+    otherWalls
+    {
+        type wall;
+        faces
+        (            
+            (4 0 3 7)     // Left wall
+            (5 6 2 1)     // Right wall
+            (4 5 1 0)     // Bottom wall 
+        );
+    }
+
+    frontAndBack
+    {
+        type empty;
+        faces
+        (
+            (0 1 2 3)
+            (4 7 6 5)    
+        );
+    }
+
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
