@@ -6,4 +6,5 @@ icoFoam Solver Test Cases:
 (3) cylinder-2d-Re=40-steady: 2D uniform flow inlet (scale=0.01) for Re = 40 with clustering over cylinder multi-block
 (4) lid-driven-cavity-Re=5000: 2D lid-driven laminar cavity flow steady up to Re = 5000 with mesh clustering on walls
 (5) thermal-channel-2d: 2D channel flow forced convection with constant inlet temperature and iso-thermal walls
+(6) buoyant-Cavity-2d-dT=15: 2D natural convection in square cavity laminar case constant properties up to T1-T0 = 15
 </pre>
