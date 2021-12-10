@@ -1,5 +1,5 @@
 # OpenFOAM
-<pre>
-OpenFOAM test cases and codes\n
-Current version: 8.0
-</pre>
+OpenFOAM test cases and codes \
+Current version: 8.0\
+\
+By: Behzad Baghapour
